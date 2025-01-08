@@ -1,0 +1,14 @@
+C:\Users\Haris\Projects\StudentManagementSystem\bin\Debug\net9.0\StudentManagementSystem.exe
+C:\Users\Haris\Projects\StudentManagementSystem\bin\Debug\net9.0\StudentManagementSystem.deps.json
+C:\Users\Haris\Projects\StudentManagementSystem\bin\Debug\net9.0\StudentManagementSystem.runtimeconfig.json
+C:\Users\Haris\Projects\StudentManagementSystem\bin\Debug\net9.0\StudentManagementSystem.dll
+C:\Users\Haris\Projects\StudentManagementSystem\bin\Debug\net9.0\StudentManagementSystem.pdb
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\StudentManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\StudentManagementSystem.AssemblyInfoInputs.cache
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\StudentManagementSystem.AssemblyInfo.cs
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\StudentManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\StudentManagementSystem.dll
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\refint\StudentManagementSystem.dll
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\StudentManagementSystem.pdb
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\StudentManagementSystem.genruntimeconfig.cache
+C:\Users\Haris\Projects\StudentManagementSystem\obj\Debug\net9.0\ref\StudentManagementSystem.dll
