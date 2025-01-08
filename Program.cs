@@ -19,6 +19,7 @@ class Program
             Console.WriteLine("2. Add Student");
             Console.WriteLine("3. Remove Student");
             Console.WriteLine("4. Save and Exit");
+            Console.WriteLine("5. Search Students");
             Console.Write("Choose an option: ");
 
             string choice = Console.ReadLine();
@@ -37,6 +38,9 @@ class Program
                     SaveStudents();
                     Console.WriteLine("Students saved. Goodbye!");
                     return;
+                case "5":
+                    SearchStudents();
+                    break;
                 default:
                     Console.WriteLine("Invalid choice. Press any key to try again.");
                     Console.ReadKey();
@@ -120,4 +124,31 @@ class Program
         }
     }
 
+    static void SearchStudents()
+    {
+        Console.WriteLine("Enter student name or ID to search: ");
+        string query = Console.ReadLine();
+
+        var results = students.FindAll(s =>
+        s.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+        s.Id.ToString() == query);
+
+        if (results.Count > 0)
+        {
+            Console.WriteLine("\n---Search Results: ");
+            foreach (var student in results)
+            {
+                Console.WriteLine(student);
+            }
+        }
+        else
+        {
+            Console.WriteLine("No matching students found.");
+        }
+
+        Console.WriteLine("\nPress any key to return to the menu.");
+        Console.ReadKey();
+    }
 }
+
+    
