@@ -1,12 +1,20 @@
-public class Student
+using StudentManagementSystem;
+
+public class Student : IStudent
 {
     public int Id { get; set; }
     public string Name { get; set; }
     public int Age { get; set; }
     public string Grade { get; set; }
 
-    public void DisplayInfo()
+
+    public virtual string GetDetails()
     {
-        Console.WriteLine($"ID: {Id}, Name: {Name}, Age: {Age}, Grade: {Grade}");
+        return $"ID: {Id}, Name: {Name}, Age: {Age}, Grade: {Grade}";
+    }
+
+    public override string ToString()
+    {
+        return GetDetails();
     }
 }

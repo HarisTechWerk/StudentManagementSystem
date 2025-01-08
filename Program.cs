@@ -5,72 +5,68 @@ using System.Text.Json;
 
 class Program
 {
+    static List<Student> students = new List<Student>();
+
     static void Main(string[] args)
     {
-        List<Student> students = LoadStudents();
+        LoadStudents();
 
         while (true)
         {
-            Console.WriteLine("\n--- Student Management System ---");
+            Console.Clear();
+            Console.WriteLine("--- Student Management System ---");
             Console.WriteLine("1. View Students");
             Console.WriteLine("2. Add Student");
-            Console.WriteLine("3. Add Graduate Student");
+            Console.WriteLine("3. Remove Student");
             Console.WriteLine("4. Save and Exit");
             Console.Write("Choose an option: ");
-            int choice;
 
-            if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 4)
-            {
-                Console.WriteLine("Invalid choice, please try again.");
-                continue;
-            }
-
+            string choice = Console.ReadLine();
             switch (choice)
             {
-                case 1:
-                    ViewStudents(students);
+                case "1":
+                    ViewStudents();
                     break;
-
-                case 2:
-                    AddStudent(students);
+                case "2":
+                    AddStudent();
                     break;
-
-                case 3:
-                    AddGraduateStudent(students);
+                case "3":
+                    RemoveStudent();
                     break;
-
-                case 4:
-                    SaveStudents(students);
-                    Console.WriteLine("Students saved successfully. Goodbye!");
+                case "4":
+                    SaveStudents();
+                    Console.WriteLine("Students saved. Goodbye!");
                     return;
-
                 default:
-                    Console.WriteLine("Invalid option. Please try again.");
+                    Console.WriteLine("Invalid choice. Press any key to try again.");
+                    Console.ReadKey();
                     break;
             }
         }
     }
 
-    static void ViewStudents(List<Student> students)
+    static void ViewStudents()
     {
         Console.WriteLine("\n--- Student List ---");
-        foreach (var student in students)
+        if (students.Count == 0)
         {
-            if (student is GraduateStudent graduateStudent)
+            Console.WriteLine("No students available.");
+        }
+        else
+        {
+            foreach (var student in students)
             {
-                graduateStudent.DisplayGraduateInfo();
-            }
-            else
-            {
-                student.DisplayInfo();
+                Console.WriteLine(student);
             }
         }
+        Console.WriteLine("\nPress any key to return to the menu.");
+        Console.ReadKey();
     }
 
-    static void AddStudent(List<Student> students)
+
+    static void AddStudent()
     {
-        Console.WriteLine("\n--- Add New Student ---");
-        Console.Write("Enter Name: ");
+        Console.Write("\nEnter Name: ");
         string name = Console.ReadLine();
         Console.Write("Enter Age: ");
         int age = int.Parse(Console.ReadLine());
@@ -85,49 +81,43 @@ class Program
             Grade = grade
         });
 
-        Console.WriteLine("Student added successfully!");
+        Console.WriteLine("Student added successfully! Press any key to return to the menu.");
+        Console.ReadKey();
     }
 
-    static void AddGraduateStudent(List<Student> students)
+    static void RemoveStudent()
     {
-        Console.WriteLine("\n--- Add New Graduate Student ---");
-        Console.Write("Enter Name: ");
-        string name = Console.ReadLine();
-        Console.Write("Enter Age: ");
-        int age = int.Parse(Console.ReadLine());
-        Console.Write("Enter Grade: ");
-        string grade = Console.ReadLine();
-        Console.Write("Enter Thesis Title: ");
-        string thesisTitle = Console.ReadLine();
-        Console.Write("Enter Advisor: ");
-        string advisor = Console.ReadLine();
+        Console.Write("\nEnter Student ID to remove: ");
+        int id = int.Parse(Console.ReadLine());
 
-        students.Add(new GraduateStudent
+        var student = students.Find(s => s.Id == id);
+        if (student != null)
         {
-            Id = students.Count + 1,
-            Name = name,
-            Age = age,
-            Grade = grade,
-            ThesisTitle = thesisTitle,
-            Advisor = advisor
-        });
+            students.Remove(student);
+            Console.WriteLine("Student removed successfully!");
+        }
+        else
+        {
+            Console.WriteLine("Student not found.");
+        }
 
-        Console.WriteLine("Graduate student added successfully!");
+        Console.WriteLine("Press any key to return to the menu.");
+        Console.ReadKey();
     }
 
-    static void SaveStudents(List<Student> students)
+    static void SaveStudents()
     {
         string json = JsonSerializer.Serialize(students, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText("students.json", json);
     }
 
-    static List<Student> LoadStudents()
+    static void LoadStudents()
     {
         if (File.Exists("students.json"))
         {
             string json = File.ReadAllText("students.json");
-            return JsonSerializer.Deserialize<List<Student>>(json);
+            students = JsonSerializer.Deserialize<List<Student>>(json);
         }
-        return new List<Student>();
     }
+
 }
