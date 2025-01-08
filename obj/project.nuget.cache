@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "t1t/35TfveU=",
+  "dgSpecHash": "boYt6tAbU/s=",
   "success": true,
   "projectFilePath": "C:\\Users\\Haris\\Projects\\StudentManagementSystem\\StudentManagementSystem.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Haris\\.nuget\\packages\\system.text.json\\9.0.0\\system.text.json.9.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
